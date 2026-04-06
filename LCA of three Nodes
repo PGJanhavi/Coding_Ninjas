@@ -1,0 +1,43 @@
+/**********************************************************
+	Following is the Binary Tree Node class.
+
+	class BinaryTreeNode<T> {
+	    T data;
+	    BinaryTreeNode<T> left;
+	    BinaryTreeNode<T> right;
+
+	    public BinaryTreeNode(T data) {
+		this.data = data;
+	    }
+	}
+	
+***********************************************************/
+
+public class Solution {
+	public static BinaryTreeNode<Integer> lca(BinaryTreeNode<Integer> root, int a , int b)
+	{
+		if(root == null)
+		{
+			return null;
+		}
+		if(root.data == a|| root.data == b)
+		{
+			return root;
+		}
+		BinaryTreeNode<Integer> l = lca(root.left,a,b);
+		BinaryTreeNode<Integer> r = lca(root.right,a,b);
+		if(l != null && r != null)
+		{
+			return root;
+		}
+		return (l != null)? l: r;
+	}
+    public static BinaryTreeNode<Integer> lcaOfThreeNodes(BinaryTreeNode<Integer> root, int node1, int node2,
+            int node3) 
+			{
+              BinaryTreeNode<Integer> flca = lca(root, node1, node2);
+			   BinaryTreeNode<Integer> llca = lca(root, flca.data, node3);
+			   return llca;
+
+    }
+}
