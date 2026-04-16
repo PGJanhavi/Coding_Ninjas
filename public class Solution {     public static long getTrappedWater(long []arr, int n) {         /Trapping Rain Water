@@ -1,0 +1,36 @@
+public class Solution {
+    public static long getTrappedWater(long []arr, int n) {
+        // Write your code here.
+        int l =0;
+        int r= n-1;
+        long lm =0;
+        long rm=0;
+        long w =0;
+        while(l<=r)
+        {
+            if(arr[l] <= arr[r])
+            {
+                if(arr[l]>=lm)
+                {
+                    lm = arr[l];
+                }
+                else{
+                    w += lm - arr[l];
+                }
+                l++;
+
+            }else
+            {
+                if(arr[r]>=rm)
+                {
+                    rm = arr[r];
+                }
+                else{
+                    w += rm - arr[r];
+                }
+                r--;
+            }
+        }
+        return w;
+    }
+}
