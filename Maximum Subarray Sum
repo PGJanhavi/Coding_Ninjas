@@ -1,0 +1,22 @@
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+	
+	public static long maxSubarraySum(int[] arr, int n) {
+		// write your code here
+		long m = 0;
+		long c =0;
+		for(int i=0;i<n;i++)
+		{
+			c+=arr[i];
+			if(c<0)
+			{
+				c = 0;
+			}
+			m = Math.max(m,c);
+		}
+		return m;
+	}
+
+}
