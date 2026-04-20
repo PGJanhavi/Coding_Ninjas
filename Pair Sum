@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.* ;
+
+public class Solution{
+    public static List<int[]> pairSum(int[] arr, int s) {
+        // Write your code here.
+        ArrayList<int[]> al = new ArrayList<>();
+        for(int i=0;i<arr.length;i++)
+        {
+            for(int a = i+1;a<arr.length;a++)
+            {
+                int su = arr[i]+arr[a];
+                if(su == s)
+                {
+                    int b = Math.min(arr[i],arr[a]);
+                    int c = Math.max(arr[i],arr[a]);
+                     al.add(new int[]{b,c});
+
+                }
+            }
+        }
+        Collections.sort(al,(x,y)->
+        {
+            if(x[0]==y[0])
+            {
+                return x[1]-y[1];
+            }
+            return x[0]-y[0];
+        });
+        return al;
+    }
+}
